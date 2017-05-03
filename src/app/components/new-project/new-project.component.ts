@@ -6,7 +6,7 @@ import { Project } from '../../interfaces/project';
 @Component({
     selector: 'app-new-project',
     templateUrl: './new-project.component.html',
-    styleUrls: ['./new-project.component.scss'],
+    styleUrls: ['./new-project.component.scss']
 })
 export class NewProjectComponent implements OnInit {
     @Output() creationCancelled = new EventEmitter<void>();
