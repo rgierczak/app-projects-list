@@ -36,7 +36,7 @@ export class ProjectsService {
         return Observable.create((observer: Observer<Project[]>) => {
             setTimeout(() => {
                 observer.next(this.projects);
-            }, 500);
+            }, 2000);
         });
     }
 }
