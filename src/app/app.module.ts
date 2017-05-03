@@ -9,14 +9,15 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProjectComponent } from './components/project/project.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
+import { ProjectsService } from './services/projects.service';
 
 @NgModule({
     declarations: [
         AppComponent,
         ProjectsComponent,
-        UsersComponent,
         ProjectComponent,
-        NewProjectComponent
+        NewProjectComponent,
+        UsersComponent
     ],
     imports: [
         BrowserModule,
@@ -24,7 +25,7 @@ import { NewProjectComponent } from './components/new-project/new-project.compon
         HttpModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [ProjectsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

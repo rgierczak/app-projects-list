@@ -1,12 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Project } from '../../interfaces/project';
+
+import { ProjectsService } from '../../services/projects.service';
+
 @Component({
     selector: 'app-projects',
     templateUrl: './projects.component.html',
-    styleUrls: ['./projects.component.scss']
+    styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent implements OnInit {
-    constructor() {}
+    projects: Project[];
+    markedProjectIndex = 0;
+    progress = 'progressing';
+    createNew = false;
 
-    ngOnInit() {}
+    constructor(private projectsService: ProjectsService) {}
+
+    ngOnInit() {
+        this.projectsService.loadProjects()
+            .subscribe(
+                (projects: Project[]) => {
+                    this.progress = 'finished';
+                    this.projects = projects;
+                }
+            );
+    }
+
+    onStatusUpdated(newStatus: string, id: number) {
+        this.projects[id].status = newStatus;
+    }
+
+    onProjectDeleted(index: number) {
+        this.projects.splice(index, 1);
+    }
+
+    onProjectCreated(project: Project) {
+        this.createNew = false;
+        this.projects.push(project);
+    }
 }
+
