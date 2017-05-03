@@ -11,6 +11,10 @@
     padding: 19px;
 }
 
+:host(.inactive) {
+    color: #cccccc;
+}
+
 .form-control {
     display: inline-block;
     width: 50%;
