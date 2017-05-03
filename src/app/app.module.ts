@@ -5,10 +5,18 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { UsersComponent } from './components/users/users.component';
+import { ProjectComponent } from './components/project/project.component';
+import { NewProjectComponent } from './components/new-project/new-project.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        ProjectsComponent,
+        UsersComponent,
+        ProjectComponent,
+        NewProjectComponent
     ],
     imports: [
         BrowserModule,
