@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class TestAngularAnimationsPage {
+export class AppProjectsListPage {
     navigateTo() {
         return browser.get('/');
     }
