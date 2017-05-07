@@ -5,6 +5,8 @@ import { Project } from '../../interfaces/project';
 import { ProjectsService } from '../../services/projects.service';
 import { itemStateTrigger, markedTrigger, slideStateTrigger } from './animations';
 
+const ANIMATION_TIME = 300;
+
 @Component({
     selector: 'app-projects',
     templateUrl: './projects.component.html',
@@ -48,7 +50,9 @@ export class ProjectsComponent implements OnInit {
 
     onProjectCreated(project: Project) {
         this.createNew = false;
-        this.projects.unshift(project);
+        setTimeout(() => {
+            this.projects.unshift(project);
+        }, ANIMATION_TIME);
     }
 
     onItemAnimated(event: AnimationEvent, lastProjectId: number) {
