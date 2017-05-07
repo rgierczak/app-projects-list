@@ -1,4 +1,4 @@
-# AppProjectsList
+# app-projects-list
 
 > The application shows the Angular Animations possibilities basic on application with sample projects list.
 
