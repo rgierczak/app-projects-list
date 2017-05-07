@@ -1,4 +1,4 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 export const markedTrigger = trigger('markedState', [
     state('default', style({
@@ -30,19 +30,37 @@ export const markedTrigger = trigger('markedState', [
 
 export const itemStateTrigger = trigger('itemState', [
     transition(':enter', [
-        style({
-            opacity: 0,
-            transform: 'translateX(-100%)'
-        }),
-        animate('500ms ease-out', style({
-            opacity: 1,
-            transform: 'translateX(0)'
-        }))
+        animate('500ms ease-out', keyframes([
+            style({
+                opacity: 0,
+                transform: 'translateX(-100%)',
+                offset: 0
+            }),
+            style({
+                opacity: 1,
+                transform: 'translateX(15%)',
+                offset: 0.4
+            }),
+            style({
+                opacity: 1,
+                transform: 'translateX(0)',
+                offset: 1
+            })
+        ]))
     ]),
     transition(':leave', [
-        animate('500ms ease-in', style({
-            opacity: 0,
-            transform: 'translateX(100%)'
-        }))
+        animate('500ms ease-in', keyframes([
+            style({
+                opacity: 1,
+                transform: 'translateX(0)'
+            }),
+            style({
+                transform: 'translateX(-15%)'
+            }),
+            style({
+                opacity: 0,
+                transform: 'translateX(100%)'
+            })
+        ]))
     ])
 ]);
