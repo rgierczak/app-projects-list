@@ -4,7 +4,7 @@ import { AnimationEvent } from '@angular/animations';
 import { Project } from '../../interfaces/project';
 import { ProjectsService } from '../../services/projects.service';
 import { itemStateTrigger, markedTrigger, slideStateTrigger } from './animations';
-import { routeFadeStateTrigger } from '../../shared/route-animations';
+import { routeFadeStateTrigger, routeSlideStateTrigger } from '../../shared/route-animations';
 
 const ANIMATION_TIME = 300;
 
@@ -16,11 +16,13 @@ const ANIMATION_TIME = 300;
         markedTrigger,
         itemStateTrigger,
         slideStateTrigger,
-        routeFadeStateTrigger
+        routeFadeStateTrigger,
+        routeSlideStateTrigger
     ]
 })
 export class ProjectsComponent implements OnInit {
-    @HostBinding('@routeFadeState') routeAnimation = true;
+    // @HostBinding('@routeFadeState') routeAnimation = true;
+    @HostBinding('@routeSlideState') routeAnimation = true;
 
     projects: Project[];
     displayProjects: Project[] = [];
