@@ -37,10 +37,11 @@
                 *ngIf="progress != 'finished'"></div>
         </div>
         <app-project
-            *ngFor="let project of projects; let i = index"
+            *ngFor="let project of displayProjects; let i = index"
             [project]="project"
             [@markedState]="markedProjectIndex === i ? 'marked' : 'default'"
             @itemState
+            (@itemState.done)="onItemAnimated($event, i)"
             [ngClass]="{inactive: project.status === 'inactive'}"
             (statusUpdated)="onStatusUpdated($event, i)"
             (projectDeleted)="onProjectDeleted(i)"

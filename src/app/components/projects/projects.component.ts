@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationEvent } from '@angular/animations';
 
 import { Project } from '../../interfaces/project';
 import { ProjectsService } from '../../services/projects.service';
@@ -15,6 +16,7 @@ import { itemStateTrigger, markedTrigger } from './animations';
 })
 export class ProjectsComponent implements OnInit {
     projects: Project[];
+    displayProjects: Project[] = [];
     markedProjectIndex = 0;
     progress = 'progressing';
     createNew = false;
@@ -27,6 +29,10 @@ export class ProjectsComponent implements OnInit {
                 (projects: Project[]) => {
                     this.progress = 'finished';
                     this.projects = projects;
+
+                    if (this.projects.length >= 1) {
+                        this.displayProjects.push(this.projects[0]);
+                    }
                 }
             );
     }
@@ -42,6 +48,18 @@ export class ProjectsComponent implements OnInit {
     onProjectCreated(project: Project) {
         this.createNew = false;
         this.projects.unshift(project);
+    }
+
+    onItemAnimated(event: AnimationEvent, lastProjectId: number) {
+        if (event.fromState != 'void') {
+            return;
+        }
+
+        if (this.projects.length > lastProjectId + 1) {
+            this.displayProjects.push(this.projects[lastProjectId + 1])
+        } else {
+            this.projects = this.displayProjects;
+        }
     }
 }
 
